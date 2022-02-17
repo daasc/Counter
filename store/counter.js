@@ -1,8 +1,15 @@
 export const state = () => ({
-  counter: 10,
+  counter: 0,
 })
 
-export const mutations = {}
+export const mutations = {
+  increment: (state) => {
+    state.counter++
+  },
+  decrement: (state) => {
+    state.counter--
+  },
+}
 
 export const actions = {}
 
