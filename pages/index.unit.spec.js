@@ -8,23 +8,36 @@ const storeConfig = {
   getters,
   mutations,
   actions,
+  namespaced: true,
 }
 
 describe('index', () => {
-  const mountIndex = () => {
+  const mountIndex = async () => {
     const localVue = createLocalVue()
     localVue.use(Vuex)
 
-    const store = new Vuex.Store(storeConfig)
-    const wrapper = mount(index, {
-      mocks: {
-        $store: store,
+    const store = new Vuex.Store({
+      modules: {
+        counter: storeConfig,
       },
+    })
+    const wrapper = await mount(index, {
+      localVue,
+      store,
     })
     return { store, wrapper }
   }
-  it('should mount the component', () => {
-    const { wrapper } = mountIndex()
+  it('should mount the component', async () => {
+    const { wrapper } = await mountIndex()
     expect(wrapper.vm).toBeDefined()
+  })
+  it('counter should start with the value zero', async () => {
+    const { wrapper } = await mountIndex()
+    const counter = await wrapper.find('[data-testid="counter"]')
+    const button = wrapper.find('[data-testid="button-increment"]')
+    await button.trigger('click')
+    expect(counter.text()).toContain('1')
+    await button.trigger('click')
+    expect(counter.text()).toContain('2')
   })
 })

@@ -1,15 +1,14 @@
 <template>
   <div>
     <button-increment @setIncrement="add()"></button-increment>
-    {{ counter }}
+    <span data-testid="counter">{{ counter }}</span>
     <button-decrement @setDecrement="decrement()"></button-decrement>
   </div>
 </template>
 
 <script>
 import buttonDecrement from '@/components/buttonDecrement.vue'
-import buttonIncrement from '@/components/buttonDecrement.vue'
-
+import buttonIncrement from '@/components/buttonIncrement.vue'
 export default {
   name: 'IndexPage',
   components: { buttonDecrement, buttonIncrement },
