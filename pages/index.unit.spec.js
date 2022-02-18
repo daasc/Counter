@@ -70,4 +70,20 @@ describe('index', () => {
     await reset.trigger('click')
     expect(counter.text()).toEqual('0')
   })
+
+  it('should change color to green when increment button is clicked', async () => {
+    const { wrapper } = await mountIndex()
+    const counter = await wrapper.find('[data-testid="counter"]')
+    const button = wrapper.find('[data-testid="button-increment"]')
+    await button.trigger('click')
+    expect(counter.classes()).toContain('positive')
+  })
+
+  it('should change color to red when decrement button is clicked', async () => {
+    const { wrapper } = await mountIndex()
+    const counter = await wrapper.find('[data-testid="counter"]')
+    const button = wrapper.find('[data-testid="button-decrement"]')
+    await button.trigger('click')
+    expect(counter.classes()).toContain('negative')
+  })
 })

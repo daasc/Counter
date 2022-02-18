@@ -1,11 +1,16 @@
 <template>
   <div class="container">
     <h1>Counter</h1>
-    <span class="counter" data-testid="counter">{{ counter }}</span>
+    <span
+      class="counter"
+      data-testid="counter"
+      :class="{ positive: counter > 0, negative: counter < 0 }"
+      >{{ counter }}</span
+    >
     <div class="buttons">
-      <button-increment @setIncrement="add()"></button-increment>
-      <button-reset @setReset="reset()"></button-reset>
       <button-decrement @setDecrement="decrement()"></button-decrement>
+      <button-reset @setReset="reset()"></button-reset>
+      <button-increment @setIncrement="add()"></button-increment>
     </div>
   </div>
 </template>
@@ -51,6 +56,12 @@ export default {
 .counter {
   font-size: 4rem;
   color: rgb(16, 42, 66);
+}
+.counter.positive {
+  color: green;
+}
+.counter.negative {
+  color: red;
 }
 .btn {
   align-items: center;
