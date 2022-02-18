@@ -1,0 +1,1 @@
+window.__NUXT__=(function(a){return {staticAssetsBase:"\u002FCounter\u002F_nuxt\u002Fstatic\u002F1645219694",layout:"default",error:a,state:{counter:{counter:0}},serverRendered:true,routePath:"\u002F",config:{_app:{basePath:"\u002FCounter\u002F",assetsPath:"\u002FCounter\u002F_nuxt\u002F",cdnURL:a}}}}(null));
