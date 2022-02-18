@@ -48,11 +48,26 @@ describe('index', () => {
 
   it('counter should decrement when buttonDecrement for the clicked', async () => {
     const { wrapper } = await mountIndex()
+
     const counter = await wrapper.find('[data-testid="counter"]')
     const button = wrapper.find('[data-testid="button-decrement"]')
+
     await button.trigger('click')
     expect(counter.text()).toEqual('-1')
     await button.trigger('click')
     expect(counter.text()).toEqual('-2')
+  })
+
+  it('counter should reset when buttonReset for the clicked', async () => {
+    const { wrapper } = await mountIndex()
+
+    const counter = await wrapper.find('[data-testid="counter"]')
+    const reset = wrapper.find('[data-testid="button-reset"]')
+    const decrement = wrapper.find('[data-testid="button-decrement"]')
+
+    await decrement.trigger('click')
+    expect(counter.text()).toEqual('-1')
+    await reset.trigger('click')
+    expect(counter.text()).toEqual('0')
   })
 })

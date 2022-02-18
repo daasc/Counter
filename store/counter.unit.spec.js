@@ -38,4 +38,14 @@ describe('Counter store', () => {
     await store.commit('decrement')
     expect(store.state.counter).toEqual(-2)
   })
+
+  it('Mutation => should reset counter when reset is called ', async () => {
+    const { store } = createStore()
+    await store.commit('increment')
+    await store.commit('reset')
+    expect(store.state.counter).toEqual(0)
+    await store.commit('decrement')
+    await store.commit('reset')
+    expect(store.state.counter).toEqual(0)
+  })
 })

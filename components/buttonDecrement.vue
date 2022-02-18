@@ -1,5 +1,5 @@
 <template>
-  <button data-testid="button-decrement" @click="toDecrement()">
+  <button class="btn" data-testid="button-decrement" @click="toDecrement()">
     Decrement
   </button>
 </template>
@@ -13,3 +13,4 @@ export default {
   },
 }
 </script>
+<style lang="scss"></style>

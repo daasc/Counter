@@ -1,5 +1,5 @@
 <template>
-  <button data-testid="button-increment" @click="toIncrement()">
+  <button class="btn" data-testid="button-increment" @click="toIncrement()">
     Increment
   </button>
 </template>
