@@ -34,10 +34,25 @@ describe('index', () => {
   it('counter should start with the value zero', async () => {
     const { wrapper } = await mountIndex()
     const counter = await wrapper.find('[data-testid="counter"]')
+    expect(counter.text()).toContain('0')
+  })
+  it('counter should increment when buttonIncrement for the clicked', async () => {
+    const { wrapper } = await mountIndex()
+    const counter = await wrapper.find('[data-testid="counter"]')
     const button = wrapper.find('[data-testid="button-increment"]')
     await button.trigger('click')
-    expect(counter.text()).toContain('1')
+    expect(counter.text()).toEqual('1')
     await button.trigger('click')
-    expect(counter.text()).toContain('2')
+    expect(counter.text()).toEqual('2')
+  })
+
+  it('counter should decrement when buttonDecrement for the clicked', async () => {
+    const { wrapper } = await mountIndex()
+    const counter = await wrapper.find('[data-testid="counter"]')
+    const button = wrapper.find('[data-testid="button-decrement"]')
+    await button.trigger('click')
+    expect(counter.text()).toEqual('-1')
+    await button.trigger('click')
+    expect(counter.text()).toEqual('-2')
   })
 })
