@@ -58,7 +58,7 @@ describe('index', () => {
     expect(counter.text()).toEqual('-2')
   })
 
-  it('counter should reset when buttonReset for the clicked', async () => {
+  it.only('counter should reset when buttonReset for the clicked', async () => {
     const { wrapper } = await mountIndex()
 
     const counter = await wrapper.find('[data-testid="counter"]')

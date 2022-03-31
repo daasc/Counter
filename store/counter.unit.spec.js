@@ -18,6 +18,7 @@ describe('Counter store', () => {
 
     return { store }
   }
+
   it('State => counter should start with the value zero', () => {
     const { store } = createStore()
     expect(store.state.counter).toEqual(0)
